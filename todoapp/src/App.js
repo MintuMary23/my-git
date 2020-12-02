@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Form from "./Components/Form";
 import List from "./Components/List";
 import LifeCycleEvents from "./Components/LifeCycleEvents";
+import Header from "./Components/Header";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -15,16 +17,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Todo
-          name={this.state.name}
-          age={this.state.age}
-          st={{ color: "red" }}
-        />
-        <Form />
-        <List />
-        <LifeCycleEvents />
-      </div>
+      <Router>
+        <Header />
+        <Route path="/" exact component={Form} />
+        <Route path="/list" component={List} />
+        <Route path="/life" component={LifeCycleEvents} />
+      </Router>
     );
   }
 }
